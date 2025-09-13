@@ -70,6 +70,7 @@ def procesar_autofix(filepath):
 
     df_final = pd.concat(all_data, ignore_index=True)
     filepath = guardar_archivo(df_final, "Autofix")
+    print(f"1 Archivo guardado en: {filepath}")
     subir_api(filepath)
 
 
@@ -87,7 +88,8 @@ def procesar_express_xlsx(filepath):
     df_estandar["MARCA"] = df["MARCA"]
     df_estandar["PRECIO"] = df["PRECIO DE LISTA"].apply(limpiar_precio)
 
-    filepath = guardar_archivo(df_estandar, "AutoRepuestosExpress")
+    filepath = guardar_archivo(df_estandar, "AutoRepuestosExpressXLSX")
+    print(f"2 Archivo guardado en: {filepath}")
     subir_api(filepath)
 
 
@@ -95,6 +97,7 @@ def procesar_express_xlsx(filepath):
 # PROCESAMIENTO AUTO REPUESTOS EXPRESS (CSV)
 # ===============================
 def procesar_express_csv(filepath):
+    print(f"===> Leyendo archivo CSV: {filepath}")
     df = pd.read_csv(filepath, sep=";", encoding="utf-8")
 
     # Normalizar columnas a minúsculas sin espacios ni tildes
@@ -106,16 +109,23 @@ def procesar_express_csv(filepath):
         .str.replace("ó", "o")
         .str.replace("í", "i")
     )
+    if "cod_articulo" in df.columns:
+        codigo_col = "cod_articulo"
+    elif "cod" in df.columns:
+        codigo_col = "cod"
+    else:
+        raise KeyError("No se encontró la columna de código ('cod_articulo' o 'cod') en el CSV.")
 
     df_estandar = pd.DataFrame()
-    df_estandar["CODIGO"] = df["cod"]
+    df_estandar["CODIGO"] = df[codigo_col]
     df_estandar["DESCRIPCION"] = (
         df["descripcion"].astype(str) + " " + df["rubro"].astype(str)
     ).apply(limitar_descripcion)
     df_estandar["MARCA"] = df["marca"]
     df_estandar["PRECIO"] = df["importe"].apply(limpiar_precio)
 
-    filepath = guardar_archivo(df_estandar, "AutoRepuestosExpress")
+    filepath = guardar_archivo(df_estandar, "AutoRepuestosExpressCSV")
+    print(f"3 Archivo guardado en: {filepath}")
     subir_api(filepath)
 
 
