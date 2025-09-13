@@ -7,7 +7,7 @@ import requests
 # CONFIGURACIÓN
 # ===============================
 API_URL = "https://desafio.somosait.com/api/upload/"
-OUTPUT_DIR = "downloads"
+OUTPUT_DIR = "../downloads"
 
 # Fecha actual para nombre de archivos
 FECHA_HOY = datetime.now().strftime("%Y%m%d")
