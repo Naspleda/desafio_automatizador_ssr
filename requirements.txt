@@ -1,2 +1,5 @@
 selenium
 webdriver-manager
+pandas
+mysql-connector-python
+sqlalchemy
