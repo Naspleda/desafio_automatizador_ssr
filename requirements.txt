@@ -3,3 +3,5 @@ webdriver-manager
 pandas
 mysql-connector-python
 sqlalchemy
+pyautogui
+scrot

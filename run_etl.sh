@@ -6,4 +6,4 @@ mkdir -p $OUTPUT_DIR
 
 # Ejecutar el script de python con la carpeta de salida como argumento
 # python3 main.py --output $OUTPUT_DIR
-./venv/Scripts/python.exe main.py --output $OUTPUT_DIR
+./venv/bin/python main.py --output $OUTPUT_DIR
