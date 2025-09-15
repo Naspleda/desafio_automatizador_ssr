@@ -1,3 +1,16 @@
+### Pre-Requisitos:
+En caso de linux:
+python3 -m venv venv
+source venv/bin/activate
+
+En caso de Windows:
+python -m venv venv
+source venv/Scripts/activate
+
+pip install -r requirements.txt
+
+
+
 ### Proceso:
 
 Dentro de la carpeta automatizacion-web se ejecuta el script main, el cual hace lo siguiente:
