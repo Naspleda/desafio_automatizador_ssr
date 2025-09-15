@@ -1,14 +1,19 @@
-### Pre-Requisitos:
-En caso de linux:
+## Instalación y configuración del entorno
+
+### Linux
+```bash
 python3 -m venv venv
 source venv/bin/activate
-
-En caso de Windows:
+```
+### Windows
+```bash
 python -m venv venv
-source venv/Scripts/activate
-
+venv\Scripts\activate
+```
+### Requirimientos
+```bash
 pip install -r requirements.txt
-
+```
 
 
 ### Proceso:
